@@ -1,5 +1,3 @@
-$(document).ready(function () {
-
     var today = moment().format('MMMM Do YYYY');
     console.log(today)
     $("#currentDay").append(today);
@@ -18,24 +16,26 @@ $(document).ready(function () {
     var $text5PM = $("#text5PM");
 
 
-    $("textarea").each(function () {
-        var name = parseInt($(this).attr("name"));
-        if (name < now) {
-            $(this).addClass("bg-gray");
-        }
-
-
-        if (name > now) {
-            $(this).addClass("bg-green")
-        }
-
-        if (name === now) {
-            $(this).addClass("bg-red")
-        }
 
 
 
-    })
+
+
+
+$(".textarea").each(function() {
+    var textTime = $(this).attr("data-time");
+if (now > textTime) {
+    $(this).css("background-color" , "gray");
+} else if (now < textTime){
+    $(this).css("background-color" , "green");
+} else {
+    $(this).css("background-color" , "red")
+}
+
+});
+
+
+
 
     $("button").on("click", function () {
 
@@ -62,21 +62,3 @@ $(document).ready(function () {
     $("#text3PM").append(localStorage.getItem("15PM"));
     $("#text4PM").append(localStorage.getItem("16PM"));
     $("#text5PM").append(localStorage.getItem("17PM"));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-})
-
